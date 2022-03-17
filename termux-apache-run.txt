@@ -1,0 +1,22 @@
+#install package .
+apt install php apache2 php-apache
+#go to directory
+/data/data/com.termux/files/usr/share/apache2/default-site/htdocs
+#create file and name index.php
+#go to directory
+nano /data/data/com.termux/files/usr/etc/apache2/httpd.conf*
+#go to here #Example:
+add line: LoadModule php_module libexec/apache2/libphp.so
+uncomment:LoadModule mpm_prefork_module libexec/apache2/mod_mpm_prefork.so
+comment:LoadModule mpm_worker_module libexec/apache2/mod_mpm_worker.so
+#last in add 
+<FilesMatch \.php$>
+	setHandler application/x-httpd-php
+</FilesMatch>
+#add line
+Include etc/apache2/extra/php_module.conf
+#go here
+/data/data/com.termux/files/usr/etc/apache2/extra
+touch php_module.conf
+
+
